@@ -1,22 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning Vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
-</head>
-<body>
+    <style>
+      body{
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+      p,h3,ul{
+        margin: 0;
+        padding: 0;
+      }
+      li{
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      li.fav{
+        background-color: #ff9ed2;
+        color: white;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
     <h1>Hello , vue</h1>
 
     <div id="app">
+        <a :href="url">Google</a>
+      <div v-if="showBooks">
+        <ul>
+          <li v-for="book in filteredBooks" :class="{fav: book.isFav}" @click="toggleFav(book)">
+            <img style="width: 300px;" :src="book.img" :alt="book.title">
+            <h3>{{book.title}} - {{book.author}}</h3>
+          </li>
+        </ul>
+      </div>
+      <button @click="toggleShowBook">Show the book</button>
+      <br />
 
-        <div v-if="showBooks">
-            <p style="color: red;">{{title}} - {{author}} - {{age}}</p>
-        </div>
-        <button @click='toggleShowBook'>Show the book</button>
+      
     </div>
 
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
