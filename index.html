@@ -10,7 +10,11 @@
     <h1>Hello , vue</h1>
 
     <div id="app">
-        <p style="color: red;">{{title}} - {{author}} - {{age}}</p>
+
+        <div v-if="showBooks">
+            <p style="color: red;">{{title}} - {{author}} - {{age}}</p>
+        </div>
+        <button @click='toggleShowBook'>Show the book</button>
     </div>
 
     <script src="app.js"></script>
